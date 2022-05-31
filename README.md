@@ -3,7 +3,7 @@ CSE 163 Final Project by Deja, Alison, and Zach.
 Language: Python
 CSVs Source: Data.WA.gov
 GeoDataFrame Data Source: Catalog.Data.gov
-JSON Source: https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json
+GeoJSON Source: https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json
 
 Summary:
 Here you will find the code for our CSE 163 Final Project. Our group
@@ -23,8 +23,13 @@ To run the code and see the data yourself, here's what you must do:
     * git clone https://github.com/Quesadeha/cse_163_final_project.git
 
 3. Also inside of FinalProject, create a folder named "Documents" (must be named Documents)
+<<<<<<< HEAD
 
 4. Inside of Documents, download the CSV data files and GeoDataFrame folder
+=======
+4. Inside of Documents, download the CSV data files, JSON file, and the Interactive Maps and 
+    WA_CountyBndys folders:
+>>>>>>> 16bde418172326afb3464188f23b4e5922d50698
     * https://drive.google.com/drive/folders/1njVSLZgUeG0PwVA8U_9XlLPpvtzMnRc2?usp=sharing
 
 5. Also inside of Documents, create an empty folder named "Interactive_Maps" (must be named Interactive_Maps)
@@ -44,6 +49,9 @@ To run the code and see the data yourself, here's what you must do:
 9. Run display_data.py and 18 png files will be downloaded into your current directory.
     If you cannot view these images, you can download them here...
     * https://drive.google.com/drive/folders/1DNtpmB50hrOxnuqRA2W5SpLq3Xv1LfS7?usp=sharing
+8. If you chose to input "False" for the show_maps parameter when calling plot_rates_maps,
+    then you will need to go to FinalProject/Documents/Interactive_Maps and open each file
+    to view and interact with each map in a browser.
 
 10. Go to FinalProject/cse_163_final_project/create_interactive.py
 
