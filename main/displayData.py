@@ -107,7 +107,7 @@ def plot_student_group(data, student_group_type):
     fig, ax = plt.subplots(1)
     ax.axis('off')
     data.plot(color='#8C8C8C', ax=ax, edgecolor="black", linewidth=0.7)
-    data.plot(column='GraduationRate', legend=True, ax=ax, vmin=0.3, vmax=0.9,
+    data.plot(column='GraduationRate', legend=True, ax=ax,
               legend_kwds={'orientation': 'horizontal',
                            'label': 'Percentage of Students to Graduate \
                                (Gray = Missing Data)'},
@@ -137,6 +137,9 @@ def main():
     gender_by_county = by_county(grad_rates, 'Gender')
     income_by_county = by_county(grad_rates, 'LowIncome')
     race_by_county = by_county(grad_rates, 'Race')
+    sped_by_county = by_county(grad_rates, 'sped')
+    fiveOfour_by_county = by_county(grad_rates, '504')
+    ell_by_county = by_county(grad_rates, 'ELL')
 
     # Filtered DataFrame for All Students, shows GraduationRate and Dropout
     rates_by_county = grad_or_drop_by_county(grad_rates)
@@ -151,6 +154,13 @@ def main():
                                  right_on='County', how='left')
     rates_merge = wa_bounds.merge(rates_by_county, left_on='JURISDIC_1',
                                   right_on='County', how='left')
+    sped_merge = wa_bounds.merge(sped_by_county, left_on='JURISDIC_1',
+                                 right_on='County', how='left')
+    fiveOfour_merge = wa_bounds.merge(fiveOfour_by_county,
+                                      left_on='JURISDIC_1',
+                                      right_on='County', how='left')
+    ell_merge = wa_bounds.merge(ell_by_county, left_on='JURISDIC_1',
+                                right_on='County', how='left')
 
     # Plots the Washington State County Map
     plot_map(wa_bounds)
@@ -167,6 +177,12 @@ def main():
     plot_student_group(race_merge, 'Native Hawaiian/ Other Pacific Islander')
     plot_student_group(race_merge, 'Two or More Races')
     plot_student_group(race_merge, 'White')
+    plot_student_group(sped_merge, 'Students without Disabilities')
+    plot_student_group(sped_merge, 'Students with Disabilities')
+    plot_student_group(fiveOfour_merge, 'Section 504')
+    plot_student_group(fiveOfour_merge, 'Non Section 504')
+    plot_student_group(ell_merge, 'English Language Learners')
+    plot_student_group(ell_merge, 'Non-English Language Learners')
 
     # Plots the Graduation Rate and Dropout Rate for all students
     plot_rate(rates_merge, 'GraduationRate')
