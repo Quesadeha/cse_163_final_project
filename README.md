@@ -33,6 +33,6 @@ To run the code and see the data yourself, here's what you must do:
     If you cannot view these images, you can download them here...
     * https://drive.google.com/drive/folders/1DNtpmB50hrOxnuqRA2W5SpLq3Xv1LfS7?usp=sharing
 8. If you chose to input "False" for the show_maps parameter when calling plot_rates_maps,
-    then you will need to go to /Documents/Interactive_Maps and open each file to view and
+    then you will need to go to Documents/Interactive_Maps and open each file to view and
     interact with each map in a browser.
 
