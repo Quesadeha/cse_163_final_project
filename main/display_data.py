@@ -143,7 +143,6 @@ def main():
 
     # Filtered DataFrame for All Students, shows GraduationRate and Dropout
     rates_by_county = grad_or_drop_by_county(grad_rates)
-    rates_by_county.to_csv('grad&dropout.csv')
 
     # Merged GeoDataFrames, with a specified filtered DataFrame and the
     #   Washington State County Shape GeoDataFrame
