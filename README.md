@@ -28,7 +28,7 @@ To run the code and see the data yourself, here's what you must do:
     * Do the following command in the terminal: $ conda install -c plotly plotly=5.8.0
     * Type "y" when asked if you want to proceed
 6. Go to FinalProject/cse_163_final_project/main/displayData.py
-7. Run displayData.py and 18 png files will my downloaded into your current directory.
+7. Run displayData.py and 18 png files will be downloaded into your current directory.
     If you cannot view these images, you can download them here...
     * https://drive.google.com/drive/folders/1DNtpmB50hrOxnuqRA2W5SpLq3Xv1LfS7?usp=sharing
 8. If you chose to input "False" for the show_maps parameter when calling plot_rates_maps,
