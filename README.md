@@ -3,7 +3,7 @@ CSE 163 Final Project by Deja, Alison, and Zach.
 Language: Python
 CSVs Source: Data.WA.gov
 GeoDataFrame Data Source: Catalog.Data.gov
-JSON Source: https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json
+GeoJSON Source: https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json
 
 Summary:
 Here you will find the code for our CSE 163 Final Project. Our group
@@ -21,7 +21,8 @@ To run the code and see the data yourself, here's what you must do:
 2. Inside of FinalProject, clone this repository
     * git clone https://github.com/Quesadeha/cse_163_final_project.git
 3. Also inside of FinalProject, create a folder named "Documents" (must be named Documents)
-4. Inside of Documents, download the CSV data files and GeoDataFrame folder
+4. Inside of Documents, download the CSV data files, JSON file, and the Interactive Maps and 
+    WA_CountyBndys folders:
     * https://drive.google.com/drive/folders/1njVSLZgUeG0PwVA8U_9XlLPpvtzMnRc2?usp=sharing
 5. Install plotly:
     * Create a new terminal
