@@ -1,0 +1,68 @@
+CSE 163 Final Project
+Authors: Deja, Alison, and Zach
+
+Testing Strategy Summary:
+    In order to test that our maps were representing the correct data,
+    at every step of filtering the CSV data, we checked what the resulting
+    DataFrame was. We did this by converting the dataframe to a CSV file.
+    * data.to_csv('test.csv')
+    This helped us find out when we were filtering out too much data. For
+    example, many of our graphs had missing data, meaning the counties were gray.
+    After looking at the csv data, we noticed that we were missing rows for certain
+    counties. This was the result of dropping null values before filtering the
+    dataset down to the columns we were analyzing. In the end, we decided not to
+    drop null values at all, because averaging the graduation rates did not take
+    null values into the computation. 
+
+    Another example is when we wanted to represent Gender X in a graph, but
+    when we filtered down to the Gender X graduation average for each county,
+    we had an empty dataframe. We converted our filtered data to a csv file and
+    saw this...
+
+    ,County,StudentGroup,GraduationRate
+    64,Snohomish,Female,0.7709613137096876
+    65,Snohomish,Male,0.7241602641629047
+    66,Spokane,Female,0.8171093481376861
+    67,Spokane,Gender X,
+    68,Spokane,Male,0.7682177546355423
+    ...
+
+    Gender X, had missing graduation rates throughout the whole dataset. After discovering
+    this, we learned that we could only represent male and female graduation rates throughout
+    Washington state. 
+
+    Another way we decided to check that our code was making sure we were all filtering
+    our datasets down in the same way. Our requirements were that the years must be 2014-15
+    to 2018-19, Cohort must be Year 7, and the columns 'SchoolYear', 'County', 'StudentGroupType',
+    'StudentGroup', 'Cohort', 'GraduationRate' must all be included. We had to use this
+    when we wanted to represent English Language Learners and our
+    resulting graph looked the same color for each county. The legend said that the
+    average graduation rate for each county was above 80%. Looking at how we filtered down
+    that particular dataset, we discovered that we forgot the parameter that 
+    data['Cohort'] == 'Seven Year'. 
+
+    Lastly, we confirmed that the average graduation rate for each county correlated to
+    the average dropout rate. Our resulting data set looked like...
+
+    ,County,StudentGroup,GraduationRate,Dropout
+    0,Adams,All Students,0.7981019444986759,0.20189805550123793
+    1,Asotin,All Students,0.667196007270345,0.332803992729555
+    2,Benton,All Students,0.7760854665495631,0.22221114781663803
+    3,Chelan,All Students,0.8013508467070143,0.1986142078078482
+    4,Clallam,All Students,0.6983684104912568,0.30147712329146864
+    5,Clark,All Students,0.8253041074204157,0.1744396954189425
+    ...
+
+    By computing the total average percentage for each of these counties we see..
+
+    ,County,StudentGroup,GraduationRate,Dropout, Sum
+    0,Adams: 0.7981019444986759 + 0.20189805550123793 = 1
+    1,Asotin,All Students,0.667196007270345 + 0.332803992729555 = 1
+    2,Benton,All Students,0.7760854665495631 + 0.22221114781663803 = 0.9982966144
+    3,Chelan,All Students,0.8013508467070143 + 0.1986142078078482 = 0.9999650545
+    4,Clallam,All Students,0.6983684104912568 + 0.30147712329146864 = 0.9998455338
+    5,Clark,All Students,0.8253041074204157 + 0.1744396954189425 = 0.9997438028
+
+    From this we can see that the average graduation rate and drop out rate
+    from 5 school years sums up to be around 99%. This confirms that our data is
+    accurate and we effectively averaged our data.
