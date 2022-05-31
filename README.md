@@ -14,7 +14,9 @@ students that started high school from 2008 through 2012 (the latest of whom
 in each group finished in the 2014-15 through 2018-19 school years), to find
 graduation trends between different student demographics such as Race, Income,
 English Language Learners, and Gender. Our graphs allow the viewers to easily
-come to their own conclusion about the data. Despite this, we dive into a deeper analysis. 
+come to their own conclusion about the data. Though, we dive into a deeper analysis. 
+To read our analysis, ...
+    * https://docs.google.com/document/d/1U6RQ-LARbqiL1DrZLg2QrZ_dfE9NlgqaiI4CVHLAgbI/edit?usp=sharing 
 
 To run the code and see the data yourself, here's what you must do:
 1. Create a Folder. Example: "FinalProject" (can be named anything)
