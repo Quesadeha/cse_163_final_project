@@ -82,12 +82,19 @@ def plot_rate(data, grad_type):
     """
     if(grad_type == 'GraduationRate'):
         group = 'Graduate'
+        min = 0.6
+        max = 1.0
+        color = 'Greens'
     else:
         group = 'Drop Out'
+        min = 0.0
+        max = 0.4
+        color = 'YlOrRd'
     fig, ax = plt.subplots(1)
     ax.axis('off')
     data.plot(color='#8C8C8C', ax=ax, edgecolor="black", linewidth=0.7)
-    data.plot(column=grad_type, legend=True, ax=ax,
+    data.plot(column=grad_type, legend=True, ax=ax, vmin=min,
+              vmax=max, cmap=color,
               legend_kwds={'orientation': 'horizontal',
                            'label': 'Percentage of All Students to \
                                ' + group + ' (Gray = Missing Data)'},
@@ -97,17 +104,24 @@ def plot_rate(data, grad_type):
     plt.savefig(group + '_map.png')
 
 
-def plot_student_group(data, student_group_type):
+def plot_student_group(data, student_group_type, student_group):
     """
     Method that takes a merged dataframe and a specified student
     group type and graphs that group's average graduation rate
     from 2014-2019.
     """
+    if((student_group == 'gender') | (student_group == 'income') |
+       (student_group == 'dist') | (student_group == '504')):
+        min = 0.6
+        max = 1.0
+    elif((student_group == 'race') | (student_group == 'ELL')):
+        min = 0.3
+        max = 1.0
     data = data[data['StudentGroup'] == student_group_type]
     fig, ax = plt.subplots(1)
     ax.axis('off')
     data.plot(color='#8C8C8C', ax=ax, edgecolor="black", linewidth=0.7)
-    data.plot(column='GraduationRate', legend=True, ax=ax,
+    data.plot(column='GraduationRate', legend=True, ax=ax, vmin=min, vmax=max,
               legend_kwds={'orientation': 'horizontal',
                            'label': 'Percentage of Students to Graduate \
                                (Gray = Missing Data)'},
@@ -167,22 +181,23 @@ def main():
 
     # Plots all the specified Student Groups with the according merged
     #   GeoDataFrame
-    plot_student_group(gender_merge, 'Female')
-    plot_student_group(gender_merge, 'Male')
-    plot_student_group(income_merge, 'Non-Low Income')
-    plot_student_group(income_merge, 'Low-Income')
-    plot_student_group(race_merge, 'Asian')
-    plot_student_group(race_merge, 'Black/ African American')
-    plot_student_group(race_merge, 'Hispanic/ Latino of any race(s)')
-    plot_student_group(race_merge, 'Native Hawaiian/ Other Pacific Islander')
-    plot_student_group(race_merge, 'Two or More Races')
-    plot_student_group(race_merge, 'White')
-    plot_student_group(sped_merge, 'Students without Disabilities')
-    plot_student_group(sped_merge, 'Students with Disabilities')
-    plot_student_group(fiveOfour_merge, 'Section 504')
-    plot_student_group(fiveOfour_merge, 'Non Section 504')
-    plot_student_group(ell_merge, 'English Language Learners')
-    plot_student_group(ell_merge, 'Non-English Language Learners')
+    plot_student_group(gender_merge, 'Female', 'gender')
+    plot_student_group(gender_merge, 'Male', 'gender')
+    plot_student_group(income_merge, 'Non-Low Income', 'income')
+    plot_student_group(income_merge, 'Low-Income', 'income')
+    plot_student_group(race_merge, 'Asian', 'race')
+    plot_student_group(race_merge, 'Black/ African American', 'race')
+    plot_student_group(race_merge, 'Hispanic/ Latino of any race(s)', 'race')
+    plot_student_group(race_merge, 'Native Hawaiian/ Other Pacific Islander',
+                       'race')
+    plot_student_group(race_merge, 'Two or More Races', 'race')
+    plot_student_group(race_merge, 'White', 'race')
+    plot_student_group(sped_merge, 'Students without Disabilities', 'dist')
+    plot_student_group(sped_merge, 'Students with Disabilities', 'dist')
+    plot_student_group(fiveOfour_merge, 'Section 504', '504')
+    plot_student_group(fiveOfour_merge, 'Non Section 504', '504')
+    plot_student_group(ell_merge, 'English Language Learners', 'ELL')
+    plot_student_group(ell_merge, 'Non-English Language Learners', 'ELL')
 
     # Plots the Graduation Rate and Dropout Rate for all students
     plot_rate(rates_merge, 'GraduationRate')
