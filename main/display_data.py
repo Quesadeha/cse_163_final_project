@@ -133,9 +133,11 @@ def plot_student_group(data, student_group_type, student_group):
     if(student_group_type == 'Native Hawaiian/ Other Pacific Islander'):
         plt.savefig('HawaiianOrPacificIslander_map.png')
     elif(student_group_type == 'Black/ African American'):
-        plt.savefig('BlackOrAfricanAmerican.png')
+        plt.savefig('BlackOrAfricanAmerican_map.png')
     elif(student_group_type == 'Hispanic/ Latino of any race(s)'):
-        plt.savefig('HispanicOrLatino.png')
+        plt.savefig('HispanicOrLatino_map.png')
+    elif(student_group_type == 'American Indian/ Alaskan Native'):
+        plt.savefig('AmericanIndianOrAlaskanNative_map.png')
     else:
         plt.savefig(student_group_type + '_map.png')
 
@@ -192,6 +194,7 @@ def main():
                        'race')
     plot_student_group(race_merge, 'Two or More Races', 'race')
     plot_student_group(race_merge, 'White', 'race')
+    plot_student_group(race_merge, 'American Indian/ Alaskan Native', 'race')
     plot_student_group(sped_merge, 'Students without Disabilities', 'dist')
     plot_student_group(sped_merge, 'Students with Disabilities', 'dist')
     plot_student_group(fiveOfour_merge, 'Section 504', '504')

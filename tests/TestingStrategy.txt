@@ -1,12 +1,16 @@
 CSE 163 Final Project
 Authors: Deja, Alison, and Zach
 
-Testing Strategy Summary:
-    In order to test that our maps were representing the correct data,
+Testing Strategy Summary
+
+    Strategies While Testing Smaller Graphs:
+
+        In order to test that our maps were representing the correct data,
     at every step of filtering the CSV data, we checked what the resulting
     DataFrame was. We did this by converting the dataframe to a CSV file.
     * data.to_csv('test.csv')
-    This helped us find out when we were filtering out too much data. For
+
+        This helped us find out when we were filtering out too much data. For
     example, many of our graphs had missing data, meaning the counties were gray.
     After looking at the csv data, we noticed that we were missing rows for certain
     counties. This was the result of dropping null values before filtering the
@@ -14,7 +18,7 @@ Testing Strategy Summary:
     drop null values at all, because averaging the graduation rates did not take
     null values into the computation. 
 
-    Another example is when we wanted to represent Gender X in a graph, but
+        Another example is when we wanted to represent Gender X in a graph, but
     when we filtered down to the Gender X graduation average for each county,
     we had an empty dataframe. We converted our filtered data to a csv file and
     saw this...
@@ -27,21 +31,20 @@ Testing Strategy Summary:
     68,Spokane,Male,0.7682177546355423
     ...
 
-    Gender X, had missing graduation rates throughout the whole dataset. After discovering
+        Gender X, had missing graduation rates throughout the whole dataset. After discovering
     this, we learned that we could only represent male and female graduation rates throughout
     Washington state. 
 
-    Another way we decided to check that our code was making sure we were all filtering
+        Another way we decided to check that our code was making sure we were all filtering
     our datasets down in the same way. Our requirements were that the years must be 2014-15
     to 2018-19, Cohort must be Year 7, and the columns 'SchoolYear', 'County', 'StudentGroupType',
     'StudentGroup', 'Cohort', 'GraduationRate' must all be included. We had to use this
-    when we wanted to represent English Language Learners and our
-    resulting graph looked the same color for each county. The legend said that the
-    average graduation rate for each county was above 80%. Looking at how we filtered down
-    that particular dataset, we discovered that we forgot the parameter that 
-    data['Cohort'] == 'Seven Year'. 
+    when we wanted to represent English Language Learners and our resulting graph looked the
+    same color for each county. The legend said that the average graduation rate for each
+    county was above 80%. Looking at how we filtered down that particular dataset, we
+    discovered that we forgot the parameter that data['Cohort'] == 'Seven Year'. 
 
-    Lastly, we confirmed that the average graduation rate for each county correlated to
+        Lastly, we confirmed that the average graduation rate for each county correlated to
     the average dropout rate. Our resulting data set looked like...
 
     ,County,StudentGroup,GraduationRate,Dropout
@@ -63,6 +66,50 @@ Testing Strategy Summary:
     4,Clallam,All Students,0.6983684104912568 + 0.30147712329146864 = 0.9998455338
     5,Clark,All Students,0.8253041074204157 + 0.1744396954189425 = 0.9997438028
 
-    From this we can see that the average graduation rate and drop out rate
+        From this we can see that the average graduation rate and drop out rate
     from 5 school years sums up to be around 99%. This confirms that our data is
     accurate and we effectively averaged our data.
+
+
+    Strategies While Testing Interactive Maps:
+
+        As for testing the code for creating merged the high school graduation rates, college enrollment,
+    and geometry datasets, as well as the code that created the interactive maps, there were a few main
+    strategies. We did not use a test file for this because it would have been extremely difficult to
+    implement test functions that checked whether our DataFrames or maps were exactly correct. 
+        
+        Therefore, while writing the code that trimed and filtered the columns and rows in each dataset, we made
+    sure to save our DataFrames to CSV files at different stages in the process. 
+        * data.to_csv('test.csv')
+   
+         We proceeded to open these files ourselves and check to make sure that the correct columns were included,
+    the filters had the intended effect, and there were no other kinds of undesired effects. By doing this,
+    we caught a lot of errors that could have manifested themselves in the final product and thrown off our
+    analysis. 
+
+	    For instance, after doing this we discovered Garfield and Columbia county only had data for one year.
+    These empty rows were much easier to discover in a filtered CSV file with only a few hundred rows than
+    in a file with hundreds of thousands of rows.
+
+        Additionally, this practice showed us that some rows of the graduation rate dataset were effectively
+    being duplicated when we merged it with the enrollment dataset, allowing us to target a fix for this
+    problem.
+ 
+        A third benefit from saving and examining our DataFrames  as CSV files at intermediate stages is
+    that we learned our initial groupby indexed the data by county and year, prompting us to set the
+    as_index parameter to False.
+
+        In creating the interactive maps, there were a couple of ways that we ensured these maps had been
+    deployed as intended. When we first generated the maps, we were surprised and concerned by the fact
+    that our map was shaped slightly differently than how Washington looks on a map. We quickly realized
+    that this was because no waterways were included in the map, so county borders that contained bodies of
+    water (especially the Sound) made the map look strange. After we checked our maps against other maps
+    depicting Washington county borders, we were certain that the geometry data had been used correctly.
+    Next, we made sure to check that the rates attributed to counties were correct by manually checking our rates against available government data. 
+    
+        As an example, we were skeptical of the data in Whitman County because it has low population density,
+    but had extremely high graduation and 4-year college enrollment rates for the 5 cohorts we analyzed data
+    on. We were able to verify that our data on the county was accurate after examining a page on
+        * towncharts.com 
+    that showed Whitman County has a much higher percentage of bachelor’s degree attainment than other
+    counties in the state of Washington.
