@@ -21,28 +21,31 @@ To read our analysis, ...
 To run the code and see the data yourself, here's what you must do:
 1. Download and unzip the FinalProject.zip file.
 
-2. Install Anaconda and the CSE 163 Environment, for Pandas & GeoPandas & MatPlotLib
+2. Download all the documents into the FinalProject/Document folder
+    * https://drive.google.com/drive/folders/1njVSLZgUeG0PwVA8U_9XlLPpvtzMnRc2?usp=sharing
+
+3. Install Anaconda and the CSE 163 Environment, for Pandas & GeoPandas & MatPlotLib
     * https://courses.cs.washington.edu/courses/cse163/software/ 
     * Make sure your IDE is running on the 163 Environment
 
-3. Install plotly:
+4. Install plotly:
     * Create a new terminal
     * Do the following command in the terminal: $ conda install -c plotly plotly=5.8.0
     * Type "y" when asked if you want to proceed
 
-4. Go to FinalProject/cse_163_final_project/main/display_data.py
+5. Go to FinalProject/cse_163_final_project/main/display_data.py
 
-5. Run display_data.py and 20 png files will be downloaded into your current directory.
+6. Run display_data.py and 20 png files will be downloaded into your current directory.
     If you cannot view these images, you can download them here...
     * https://drive.google.com/drive/folders/1DNtpmB50hrOxnuqRA2W5SpLq3Xv1LfS7?usp=sharing
 
-6. Go to FinalProject/cse_163_final_project/create_interactive.py
+7. Go to FinalProject/cse_163_final_project/create_interactive.py
 
-7. Run create_interactive.py (Default: Opens 5 Interactive maps in browser)
+8. Run create_interactive.py (Default: Opens 5 Interactive maps in browser)
     * You'll also be able to access the html links inside FinalProject/Documents/Interactive_Maps
 
-8. (Optional) Go to FinalProject/cse_163_final_project/mapping.py
+9. (Optional) Go to FinalProject/cse_163_final_project/mapping.py
 
-9. (Optional) Open Mapping.py, change plot_rates_map 'show_maps' parameter to False. 
+10. (Optional) Open Mapping.py, change plot_rates_map 'show_maps' parameter to False. 
     Maps will only download into the Interactive_Maps folder, and you can open each file
     in the browser individually
