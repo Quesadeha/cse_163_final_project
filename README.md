@@ -7,7 +7,7 @@ GeoJSON Source: https://raw.githubusercontent.com/plotly/datasets/master/geojson
 
 Summary:
 Here you will find the code for our CSE 163 Final Project. Our group
-decided to analyze highschool and college statistics in Washington State
+decided to analyze high school and college statistics in Washington State
 by county. Our data comes from Data.WA.gov and Catalog.Data.gov. Our goal
 is to create a variety of graphs that represent the seven-year cohorts of
 students that started high school from 2008 through 2012 (the latest of whom
